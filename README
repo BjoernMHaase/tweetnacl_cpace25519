@@ -1,0 +1,14 @@
+Proof-of-Concept for minimal-code-size CPace25519.
+
+This library extends the tweetnacl library by the extensions needed for CPace.
+
+Howto run the "testsuite".
+
+gcc -o test.exe tweetnacl_cpace25519.c tests_tweetnacl_cpace25519.c -DCPACE_IR -DCPACE_SYM
+./test.exe
+
+
+In your application include the tweetnacl_cpace25519.h Header and add the single file
+tweetnacl_cpace25519.c to your build Environment. Define either of 
+the -DCPACE_IR -DCPACE_SYM compile switches depending on your use of CPace (ordered
+Messages with clear initiator and responder or symmetric instantiation).
