@@ -1,1 +1,8 @@
 
+Original files as taken from
+
+https://tweetnacl.cr.yp.to/software.html
+
+Only change: Renamed files to avoid that integrators integrate the original files.
+The renamed Files will be explicitly included in the CPace sources as the CPace25519
+implementation needs access to the internal API of the tweetnacl library.
