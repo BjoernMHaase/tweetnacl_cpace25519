@@ -1,4 +1,7 @@
-Proof-of-Concept for minimal-code-size CPace25519 as in draft-irtf-cfrg-cpace-18
+Proof-of-Concept for minimal-code-size CPace25519 as in draft-irtf-cfrg-cpace-18.
+
+Released to the public domain under the CC0 license (full text in the 
+tweetnacl_cpace25519.c source code file).
 
 This library extends the tweetnacl library by the extensions needed for CPace.
 
