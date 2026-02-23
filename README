@@ -1,4 +1,4 @@
-Proof-of-Concept for minimal-code-size CPace25519.
+Proof-of-Concept for minimal-code-size CPace25519 as in draft-irtf-cfrg-cpace-18
 
 This library extends the tweetnacl library by the extensions needed for CPace.
 
