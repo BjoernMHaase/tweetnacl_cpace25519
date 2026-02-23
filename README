@@ -15,3 +15,6 @@ In your application include the tweetnacl_cpace25519.h Header and add the single
 tweetnacl_cpace25519.c to your build Environment. Define either of 
 the -DCPACE_IR -DCPACE_SYM compile switches depending on your use of CPace (ordered
 Messages with clear initiator and responder or symmetric instantiation).
+
+tweetnacl_cpace25519.c will itself include the full contents of the original tweetnacl.c
+file.
