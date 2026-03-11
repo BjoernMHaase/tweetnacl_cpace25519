@@ -441,6 +441,36 @@ bool cpace25519_ISK_ir(STBufferWithSize *out,
 	}
 }
 
+bool cpace25519_SID_ir(
+    STBufferWithSize *working_and_result_buffer, 
+    const unsigned char Ya[crypto_scalarmult_curve25519_BYTES],
+    const unsigned char *ADa, size_t ADa_len,
+    const unsigned char Yb[crypto_scalarmult_curve25519_BYTES],
+    const unsigned char *ADb, size_t ADb_len)
+{
+	working_and_result_buffer->actualLen = 0;
+	
+	unsigned char prefix[] = "CPaceSidOutput";
+        if (!append_bytes(working_and_result_buffer, prefix, sizeof(prefix) - 1))
+        {
+            working_and_result_buffer->actualLen = 0;
+            return false;
+        }
+        if (!transcript_ir(working_and_result_buffer,
+                   Ya,  crypto_scalarmult_curve25519_BYTES,
+                   ADa, ADa_len,
+                   Yb,  crypto_scalarmult_curve25519_BYTES,
+                   ADb, ADb_len))
+	{
+	    working_and_result_buffer->actualLen = 0;
+            return false;
+	}
+        
+	crypto_hash_sha512(&working_and_result_buffer->data[0], &working_and_result_buffer->data[0], working_and_result_buffer->actualLen);
+	working_and_result_buffer->actualLen = 64;
+	return true;
+}
+
 #endif // ifdef CPACE_IR
 
 #ifdef CPACE_SYM
@@ -636,5 +666,36 @@ bool cpace25519_ISK_sym(STBufferWithSize *out,
 		return true;
 	}
 }
+
+bool cpace25519_SID_sym(
+    STBufferWithSize *working_and_result_buffer, 
+    const unsigned char Ya[crypto_scalarmult_curve25519_BYTES],
+    const unsigned char *ADa, size_t ADa_len,
+    const unsigned char Yb[crypto_scalarmult_curve25519_BYTES],
+    const unsigned char *ADb, size_t ADb_len)
+{
+	working_and_result_buffer->actualLen = 0;
+	
+	unsigned char prefix[] = "CPaceSidOutput";
+        if (!append_bytes(working_and_result_buffer, prefix, sizeof(prefix) - 1))
+        {
+            working_and_result_buffer->actualLen = 0;
+            return false;
+        }
+        if (!transcript_oc(working_and_result_buffer,
+                   Ya,  crypto_scalarmult_curve25519_BYTES,
+                   ADa, ADa_len,
+                   Yb,  crypto_scalarmult_curve25519_BYTES,
+                   ADb, ADb_len))
+	{
+	    working_and_result_buffer->actualLen = 0;
+            return false;
+	}
+        
+	crypto_hash_sha512(&working_and_result_buffer->data[0], &working_and_result_buffer->data[0], working_and_result_buffer->actualLen);
+	working_and_result_buffer->actualLen = 64;
+	return true;
+}
+
 
 #endif // ifdef CPACE_SY

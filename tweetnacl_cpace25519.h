@@ -55,6 +55,13 @@ bool cpace25519_ISK_sym(
     const unsigned char Yb[crypto_scalarmult_curve25519_BYTES],
     const unsigned char *ADb, size_t ADb_len);
 
+bool cpace25519_SID_sym(
+    STBufferWithSize *working_and_result_buffer, 
+    const unsigned char Ya[crypto_scalarmult_curve25519_BYTES],
+    const unsigned char *ADa, size_t ADa_len,
+    const unsigned char Yb[crypto_scalarmult_curve25519_BYTES],
+    const unsigned char *ADb, size_t ADb_len);
+
 #endif
 
 #ifdef CPACE_IR
@@ -63,6 +70,13 @@ bool cpace25519_ISK_sym(
 bool cpace25519_ISK_ir(
     STBufferWithSize *working_and_result_buffer, const unsigned char *sid,
     size_t sid_len, const unsigned char K[crypto_scalarmult_curve25519_BYTES],
+    const unsigned char Ya[crypto_scalarmult_curve25519_BYTES],
+    const unsigned char *ADa, size_t ADa_len,
+    const unsigned char Yb[crypto_scalarmult_curve25519_BYTES],
+    const unsigned char *ADb, size_t ADb_len);
+
+bool cpace25519_SID_ir(
+    STBufferWithSize *working_and_result_buffer, 
     const unsigned char Ya[crypto_scalarmult_curve25519_BYTES],
     const unsigned char *ADa, size_t ADa_len,
     const unsigned char Yb[crypto_scalarmult_curve25519_BYTES],
