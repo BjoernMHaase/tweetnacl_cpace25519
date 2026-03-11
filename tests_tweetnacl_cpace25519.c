@@ -263,9 +263,9 @@ int main(int argc, char **argv) {
         &isk_str, Ya, tc_ADa, sizeof(tc_ADa), Yb, tc_ADb, sizeof(tc_ADb));
     if ((memcmp(tc_sid_out_oc, &isk_str.data[0], 64) == 0) &&
         (isk_str.actualLen == 64)) {
-      printf("\n\nCorrect SID_SYM result.\n");
+      printf("\n\nCorrect SID_OC result.\n");
     } else {
-      printf("\n\nWrong SID_SYM result.\n");
+      printf("\n\nWrong SID_OC result.\n");
     }
     for (int i = 0; i < 64; i++) {
       printf("%02x", isk_str.data[i]);
